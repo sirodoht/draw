@@ -55,7 +55,6 @@
 
   <script>
     (function() {
-      var socket = io();
       var canvas = document.getElementsByClassName('whiteboard')[0];
       var colors = document.getElementsByClassName('color');
       var context = canvas.getContext('2d');
@@ -74,8 +73,6 @@
         colors[i].addEventListener('click', onColorUpdate, false);
       }
 
-      socket.on('drawing', onDrawingEvent);
-
       window.addEventListener('resize', onResize, false);
       onResize();
 
@@ -92,14 +89,6 @@
         if (!emit) { return; }
         var w = canvas.width;
         var h = canvas.height;
-
-        socket.emit('drawing', {
-          x0: x0 / w,
-          y0: y0 / h,
-          x1: x1 / w,
-          y1: y1 / h,
-          color: color
-        });
       }
 
       function onMouseDown(e){

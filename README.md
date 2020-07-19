@@ -1,4 +1,4 @@
-# draw.sirodoht.xyz
+# draw
 
 Just draw.
 
